@@ -1,0 +1,11 @@
+---
+# tasks file for number
+ - name: "check processes on destination"
+   command: ps auxwww
+   register: ps_out
+ - set_fact:
+     processdump: "{{ ps_out.stdout | regex_findall(grepelement) }}"
+ - set_fact:
+     Processdumpcount: "{{ processdump | length }}"
+ - debug:
+     msg: "{{ Processdumpcount }}"

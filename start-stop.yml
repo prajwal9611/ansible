@@ -1,0 +1,17 @@
+---
+- hosts: localhost
+  connection: local
+  become: true
+  become_method: sudo
+  tasks:
+    - name: stop a service
+      service: 
+        name: ssh
+        state: stopped
+       
+    - name: start a service
+      service:
+        name: ssh
+        state: started
+        
+
